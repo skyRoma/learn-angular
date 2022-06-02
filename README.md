@@ -25,3 +25,18 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+<hr>
+<br>
+<br>
+
+# Notes:
+
+> @Component({
+> `selector`: 'smth',
+> }) <br>
+
+- Selector can be not only tag https://angular.io/api/core/Directive#selector. We kind of hang our logic on the markup element, and indicate the angular how to find this markup element.
+- `4` Ways of Databinding (communication between `ts` and `html`): String Interpolation, Property Binding, Event Binding, Two-Way-Databinding.
+- `@ViewChild` and `@ContentChild` static prop - `true` to resolve query results before change detection runs, false to resolve after change detection. Defaults to false (https://angular.io/guide/static-query-migration).
+- Lifecycle hooks: ![hooks diagram](./src/assets/lifecycle-hooks.png)
