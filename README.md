@@ -36,7 +36,12 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 > `selector`: 'smth',
 > }) <br>
 
-- Selector can be not only tag https://angular.io/api/core/Directive#selector. We kind of hang our logic on the markup element, and indicate the angular how to find this markup element.
-- `4` Ways of Databinding (communication between `ts` and `html`): String Interpolation, Property Binding, Event Binding, Two-Way-Databinding.
-- `@ViewChild` and `@ContentChild` static prop - `true` to resolve query results before change detection runs, false to resolve after change detection. Defaults to false (https://angular.io/guide/static-query-migration).
-- Lifecycle hooks:<br> ![hooks diagram](./src/assets/lifecycle-hooks.png)
+- Selector can be not only tag https://angular.io/api/core/Directive#selector. We kind of hang our logic on the markup element, and indicate the angular how to find this markup element;
+- `4` Ways of Databinding (communication between `ts` and `html`): String Interpolation, Property Binding, Event Binding, Two-Way-Databinding;
+- `@ViewChild` and `@ContentChild` static prop - `true` to resolve query results before change detection runs, false to resolve after change detection. Defaults to false (https://angular.io/guide/static-query-migration);
+- Lifecycle hooks:<br> ![hooks diagram](./src/assets/lifecycle-hooks.png);
+- Use Renderer2 instead of directly accessing the DOM (e.g. for styling);
+- `HostListener('eventName')` - can also listen to custom events (can be useful in custom directives);
+- `@HostBinding('style.backgroundColor') backgroundColor = 'transparent'` - nice way for accessing host element properties (e.g. for styling);
+- To use the directive also as an input we need to add an alias for `@Input('alias')` with the same name as a directive selector or just use the same name for input property.
+- Providers in Providers array are hierarchical. If we provide service inside component providers, then it will be available for this component and it's child components. This will even overwrite if we were to provide the same service on a higher level.
