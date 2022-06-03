@@ -1,24 +1,34 @@
 import { EventEmitter, Injectable } from '@angular/core';
+import { Ingredient } from '../shared/ingredient.model';
+import { ShoppingListService } from '../shopping-list/shopping-list.service';
 import { Recipe } from './recipe.model';
 
-Injectable();
+@Injectable()
 export class RecipeService {
   recipeSelected = new EventEmitter<Recipe>();
 
   private recipes: Recipe[] = [
     new Recipe(
-      'A Test Recipe',
-      'This is simply a test',
-      'https://www.cookingclassy.com/wp-content/uploads/2022/05/bolognese-2-1024x1536.jpg'
+      'Tasty Schnitzel',
+      'A super-tasty Schnitzel - just awesome!',
+      'https://www.cooklikeczechs.com/wp-content/uploads/2020/04/wiener-schnitzel-recipe-weinersnitchel.jpg',
+      [new Ingredient('Meat', 1), new Ingredient('French Fries', 20)]
     ),
     new Recipe(
-      'Another Recipe',
-      'This is simply a test',
-      'https://www.cookingclassy.com/wp-content/uploads/2022/05/bolognese-2-1024x1536.jpg'
+      'Big Fat Burger',
+      'What else you need to say?',
+      'https://cdn-cmjom.nitrocdn.com/FpMsHpAgoVrRMnuAdmBhGkyiizdsWlSU/assets/static/optimized/rev-baa58a1/wp-content/uploads/2015/07/king-burger-541x633.png',
+      [new Ingredient('Buns', 2), new Ingredient('Meat', 1)]
     ),
   ];
 
+  constructor(private shoppingListService: ShoppingListService) {}
+
   getRecipes() {
     return this.recipes.slice();
+  }
+
+  addIngredientsToShoppingList(ingredients: Ingredient[]) {
+    this.shoppingListService.addIngredients(ingredients);
   }
 }
