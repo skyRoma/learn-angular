@@ -28,10 +28,10 @@
           >
         </li>
         <li>
-          <a href="#">Edit Recipe</a>
+          <a style="cursor: pointer" (click)="onEditRecipe()">Edit Recipe</a>
         </li>
         <li>
-          <a href="#">Delete Recipe</a>
+          <a style="cursor: pointer">Delete Recipe</a>
         </li>
       </ul>
     </div>
@@ -44,7 +44,7 @@
 
 <div class="row">
   <div class="col-xs-12">
-    <ul>
+    <ul class="list-group">
       <li class="list-group-item" *ngFor="let ingredient of recipe.ingredients">
         {{ ingredient.name }} - {{ ingredient.amount }}
       </li>

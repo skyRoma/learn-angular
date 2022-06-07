@@ -17,5 +17,6 @@ export class DropdownDirective {
       ? !this.isOpen
       : false;
   }
+
   constructor(private elRef: ElementRef) {}
 }
