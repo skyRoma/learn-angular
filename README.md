@@ -96,4 +96,7 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
         component: RecipeEditComponent,
     },
   ```
+
   will cause an error, because order matters. Angular will interpret `new` as an `id`;
+
+- Use `EventEmitter` only for `@Output()`, not like a `Subject`;
