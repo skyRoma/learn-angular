@@ -130,9 +130,10 @@ to find this markup element;
   The SetValue requires that the object must match the structure of the FormGroup
   or FormArray exactly. Otherwise, it will result in an error;
 
-- ```js 
+- ```js
     (new FormGroup({}).get('test') as FormArray).push(new FormControl(null));
   ```
+
   Need explicitly add as `FormArray`, otherwise `.push` will throw an error;
 
 - HowTo Use custom validators in the template (e.g. to show the error message):
@@ -141,3 +142,35 @@ to find this markup element;
   ```
 - Inside custom validator if the condition for the error is not met, then you need
   to return `null`;
+
+- Template Pipes:
+
+  ```js
+    *ngFor="let item of items | pipeName:pipeArgument1:pipeArgument2"
+  ```
+
+  ```js
+    @Pipe({ name: 'pipeName', pure: true })
+    export class PipeNamePipe implements PipeTransform{
+      transform(value: any, ...args: any[]) {
+        ...
+      }
+    }
+  ```
+
+  `pure`: When `true`, the pipe is pure, meaning that the transform() method is
+  invoked only when its input arguments change. Pipes are pure by default.
+
+  If the pipe has internal state (that is, the result depends on state other
+  than its arguments, e.g. we will add another item into items array above
+  (in the example value = items)), set pure to `false`. In this case, the
+  pipe is invoked on each change-detection cycle, even if the arguments have
+  not changed;
+
+- Rxjs `catchError` operator should return or a new observable or throw an
+  error using `throwError` or `throw new Error(errorMsg)` (https://rxjs.dev/api/index/function/throwError);
+
+- ```js
+  http.get(url, { observe: "response" });
+  ```
+  `{observe: 'response'}` is what makes the full response object available;
