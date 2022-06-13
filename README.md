@@ -173,4 +173,7 @@ to find this markup element;
 - ```js
   http.get(url, { observe: "response" });
   ```
+
   `{observe: 'response'}` is what makes the full response object available;
+
+- `BehaviorSubject` - Requires an initial value and `emits the current value to new subscribers`;
