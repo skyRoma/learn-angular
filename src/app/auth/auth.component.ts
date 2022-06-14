@@ -22,7 +22,9 @@ export class AuthComponent implements OnDestroy {
   constructor(private authService: AuthService, private router: Router) {}
 
   ngOnDestroy(): void {
-    this.subscription.unsubscribe();
+    if (this.subscription) {
+      this.subscription.unsubscribe();
+    }
   }
 
   onSwitchMode() {

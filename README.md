@@ -177,3 +177,17 @@ to find this markup element;
   `{observe: 'response'}` is what makes the full response object available;
 
 - `BehaviorSubject` - Requires an initial value and `emits the current value to new subscribers`;
+
+- Angular parses every ngModule standalone, so it's not enough to export the
+  components to another module, you also need to add everything they need to
+  the module in which they are declared in the declaration array.
+  Only root application module - AppModule should import BrowserModule. All
+  other feature module should import CommonModule because we only need the
+  Angular directives in feature module and not the services that are required
+  launch the app (BrowserModule re-exports CommonModule for AppModule).
+
+- Providers & Modules: [(source)](https://www.udemy.com/course/the-complete-guide-to-angular-2)
+  ![Providers & Modules](./src/assets/modules.png)
+
+- With JIT (Just-In-execution-Time) compilation Angular template compiler runs in browser
+  so this compiler also part of build code in the browser;
