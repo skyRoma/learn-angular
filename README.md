@@ -1,4 +1,5 @@
 # LearnAngular
+
 https://learn-angular-udemy-course.web.app
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.3.7.
@@ -190,5 +191,23 @@ to find this markup element;
 - Providers & Modules: [(source)](https://www.udemy.com/course/the-complete-guide-to-angular-2)
   ![Providers & Modules](./src/assets/modules.png)
 
-- With JIT (Just-In-execution-Time) compilation Angular template compiler runs in browser
-  so this compiler also part of build code in the browser;
+- With JIT (Just-In-execution-Time) compilation Angular template compiler runs
+  in browser so this compiler also part of build code in the browser;
+
+- `NgRx` when it is initialized sends a separate action to all reducers, and since
+  we don't process that action in our `switchCase`, so the `default switchCase`
+  fires and we return the initial state because previously it wasn't initialized.
+  That's how we have initial states in the app;
+
+- `NgRx` any action reaches ALL reducers;
+
+- `NgRx Effects` should not be completed, failed, or throw an error, they are
+  on-going observables otherwise it won't be possible to handle the next emissions;
+
+- `NgRx effects` fire after all reducers for that action have executed.
+  That order is guaranteed;
+
+- `Life hack` - if you need to dispatch action in the `Effects`, but you can't
+  return it for some reason, e.g. you need to put `dispatch` in a `setTimeout`.
+  To do this, it's better to use a `service` that is easily can be injected into
+  the effect, and dispatch this action in the `service.store.dispatch()`.

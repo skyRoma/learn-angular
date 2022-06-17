@@ -3,7 +3,7 @@ import {
   ADD_INGREDIENT,
   ADD_INGREDIENTS,
   DELETE_INGREDIENT,
-  ShoppingListActions,
+  ShoppingListAction,
   START_EDIT,
   STOP_EDIT,
   UPDATE_INGREDIENT,
@@ -15,10 +15,6 @@ export interface ShoppingListState {
   editedIngredientIndex: number;
 }
 
-export interface AppState {
-  shoppingList: ShoppingListState;
-}
-
 const initialState: ShoppingListState = {
   ingredients: [new Ingredient('Apples', 5), new Ingredient('Tomatoes', 10)],
   editedIngredient: null,
@@ -27,7 +23,7 @@ const initialState: ShoppingListState = {
 
 export function shoppingListReducer(
   state = initialState,
-  action: ShoppingListActions
+  action: ShoppingListAction
 ): ShoppingListState {
   switch (action.type) {
     case ADD_INGREDIENT:
