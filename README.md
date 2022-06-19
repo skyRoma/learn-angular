@@ -211,3 +211,41 @@ to find this markup element;
   return it for some reason, e.g. you need to put `dispatch` in a `setTimeout`.
   To do this, it's better to use a `service` that is easily can be injected into
   the effect, and dispatch this action in the `service.store.dispatch()`.
+
+- Errors in Action observables should be handled on inner observables, to have
+  possibilities to use them later, otherwise error will complete the observable.
+  `Bad`:
+
+  ```js
+  authSignup = createEffect(() =>
+    this.actions$.pipe(
+      ofType(SIGNUP_START),
+      switchMap(({ payload }: SignupStart) => this.http.post("url", {})),
+      map((resData) => this.handleAuthentication(resData)),
+      catchError((errorResponse) => this.handleError(errorResponse))
+    )
+  );
+  ```
+
+  `Good`:
+
+  ```js
+  authSignup = createEffect(() =>
+    this.actions$.pipe(
+      ofType(SIGNUP_START),
+      switchMap(({ payload }: SignupStart) =>
+        this.http.post("url", {}).pipe(
+          map((resData) => this.handleAuthentication(resData)),
+          catchError((errorResponse) => this.handleError(errorResponse))
+        )
+      )
+    )
+  );
+  ```
+
+- AuthGuard.canActivate() do not invoke when you try to navigate to the same page
+  through the code even if that page is `guarded`. Actually we can force angular
+  to run `authGuard.canActivate()` when we trying to navigate to the same guarded
+  route, by setting route's property `runGuardAndResolvers: 'always'`.
+
+- Example of the NgRx project https://github.com/ngrx/platform/tree/master/projects

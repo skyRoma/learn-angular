@@ -15,7 +15,8 @@ export class AuthComponent implements OnInit, OnDestroy {
   isLoginMode = true;
   isLoading = false;
 
-  private subscription = new Subscription();
+  private closeSubscription = new Subscription();
+  private authSubscription = new Subscription();
 
   @ViewChild(PlaceholderDirective)
   alertHost: PlaceholderDirective;
@@ -23,20 +24,21 @@ export class AuthComponent implements OnInit, OnDestroy {
   constructor(private store: Store<AppState>) {}
 
   ngOnInit(): void {
-    this.subscription.add(
-      this.store.select('auth').subscribe(({ loading, authError }) => {
+    this.authSubscription = this.store
+      .select('auth')
+      .subscribe(({ loading, authError }) => {
         this.isLoading = loading;
         if (authError) {
           this.showErrorAlert(authError);
         }
-      })
-    );
+      });
   }
 
   ngOnDestroy(): void {
-    if (this.subscription) {
-      this.subscription.unsubscribe();
+    if (this.closeSubscription) {
+      this.closeSubscription.unsubscribe();
     }
+    this.authSubscription.unsubscribe();
   }
 
   onSwitchMode() {
@@ -60,11 +62,9 @@ export class AuthComponent implements OnInit, OnDestroy {
     viewContainerRef.clear();
     const alertComponentRef = viewContainerRef.createComponent(AlertComponent);
     alertComponentRef.instance.message = errorMsg;
-    this.subscription.add(
-      alertComponentRef.instance.close.subscribe(() => {
-        this.subscription.unsubscribe();
-        viewContainerRef.clear();
-      })
-    );
+    this.closeSubscription = alertComponentRef.instance.close.subscribe(() => {
+      this.closeSubscription.unsubscribe();
+      viewContainerRef.clear();
+    });
   }
 }

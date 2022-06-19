@@ -4,14 +4,10 @@ import { AuthGuardService } from './auth/auth-guard.service';
 import { AuthInterceptorService } from './auth/auth-interceptor.service';
 import { AuthService } from './auth/auth.service';
 import { LoggingService } from './logging.service';
-import { RecipeService } from './recipes/recipe.service';
 import { RecipesResolverService } from './recipes/recipes-resolver.service';
-import { DataStorageService } from './shared/data-storage.service';
 
 @NgModule({
   providers: [
-    RecipeService,
-    DataStorageService,
     RecipesResolverService,
     AuthService,
     AuthGuardService,

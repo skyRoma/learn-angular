@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Actions, createEffect, ofType } from '@ngrx/effects';
+import { act, Actions, createEffect, ofType } from '@ngrx/effects';
 import { catchError, map, switchMap, tap } from 'rxjs/operators';
 import {
   AuthenticateFail,
@@ -64,7 +64,7 @@ export class AuthEffects {
               password: payload.password,
               returnSecureToken: true,
             }
-          ) // Check this moving this pipe on level up
+          )
           .pipe(
             map((resData) => this.handleAuthentication(resData)),
             catchError((errorResponse) => this.handleError(errorResponse))
@@ -118,6 +118,7 @@ export class AuthEffects {
             userId: userData.id,
             idToken: userData._token,
             expirationDate: new Date(userData._tokenExpirationDate),
+            redirect: false,
           });
         }
 
@@ -130,8 +131,10 @@ export class AuthEffects {
     () =>
       this.actions$.pipe(
         ofType(AUTHENTICATE_SUCCESS),
-        tap(() => {
-          this.router.navigate(['/']);
+        tap(({ payload }: AuthenticateSuccess) => {
+          if (payload.redirect) {
+            this.router.navigate(['/']);
+          }
         })
       ),
     { dispatch: false }
@@ -162,6 +165,7 @@ export class AuthEffects {
       userId: localId,
       idToken,
       expirationDate,
+      redirect: true,
     });
   }
 
