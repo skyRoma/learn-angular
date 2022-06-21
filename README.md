@@ -249,3 +249,8 @@ to find this markup element;
   route, by setting route's property `runGuardAndResolvers: 'always'`.
 
 - Example of the NgRx project https://github.com/ngrx/platform/tree/master/projects
+
+- `Angular Universal` - App Component will not only run on the server, but will
+  also run on the client. The page will be pre-rendered on the server, but as
+  soon as it served, the code will be repeated on the client. `isPlatformBrowser`
+  can be used to check where the code is being executed.
