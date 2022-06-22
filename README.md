@@ -254,3 +254,32 @@ to find this markup element;
   also run on the client. The page will be pre-rendered on the server, but as
   soon as it served, the code will be repeated on the client. `isPlatformBrowser`
   can be used to check where the code is being executed.
+
+- Test `Async` methods:
+  ```js
+  getSyncData() {
+    return new Promise((res, rej) => {
+      setTimeout(() => {
+        res('Data');
+      }, 2000);
+    });
+  }
+  ```
+  Test:
+  ```js
+  it("title", waitForAsync(() => {
+    component.getSyncData().then((data) => {
+      expect(data).toBe("Data");
+    });
+  }));
+  ```
+  OR (better, since we don't wait):
+  ```js
+  it("title", fakeAsync(() => {
+    const promise = component.getSyncData();
+    tick(2000);
+    promise.then((data) => {
+      expect(data).toBe("Data");
+    });
+  }));
+  ```
