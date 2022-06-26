@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "public": "dist/learn-angular/browser",
+    "public": "dist/main-course/browser",
     "ignore": [
       "firebase.json",
       "**/.*",

@@ -7,10 +7,12 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "dev:ssr": "ng run learn-angular:serve-ssr",
-    "serve:ssr": "node dist/learn-angular/server/main.js",
-    "build:ssr": "ng build && ng run learn-angular:server",
-    "prerender": "ng run learn-angular:prerender"
+    "dev:ssr": "ng run main-course:serve-ssr",
+    "serve:ssr": "node dist/main-course/server/main.js",
+    "build:ssr": "ng build main-course && ng run main-course:server",
+    "prerender": "ng run main-course:prerender",
+    "start:animation": "ng run animation:serve",
+    "start:standalone-components": "ng run standalone-components:serve"
   },
   "private": true,
   "dependencies": {
@@ -29,7 +31,6 @@
     "bootstrap": "^3.4.1",
     "express": "^4.15.2",
     "rxjs": "^6.6.7",
-    "rxjs-compat": "^6.6.7",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"
   },

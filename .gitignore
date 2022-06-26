@@ -22,7 +22,6 @@ yarn-error.log
 
 # Visual Studio Code
 .vscode/*
-!.vscode/extensions.json
 .history/*
 
 # Miscellaneous
