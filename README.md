@@ -51,7 +51,7 @@ to find this markup element;
   before change detection runs, `false` to resolve after change detection. Defaults
   to false (https://angular.io/guide/static-query-migration);
 
-- Lifecycle hooks:<br> ![hooks diagram](./src/assets/lifecycle-hooks.png);
+- Lifecycle hooks:<br> ![hooks diagram](./projects/main-course/src/assets/lifecycle-hooks.png);
 
 - Use Renderer2 instead of directly accessing the DOM (e.g. for styling);
 
