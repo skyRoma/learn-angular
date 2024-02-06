@@ -114,9 +114,12 @@
               ]
             },
             "development": {
+              "buildOptimizer": false,
               "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
               "sourceMap": true,
-              "extractLicenses": false
+              "namedChunks": true
             }
           },
           "defaultConfiguration": "production"

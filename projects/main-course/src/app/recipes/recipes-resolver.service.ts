@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { Resolve } from '@angular/router';
 import { Actions, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
 import { of } from 'rxjs';
@@ -9,7 +8,7 @@ import { Recipe } from './recipe.model';
 import { FetchRecipes, SET_RECIPES } from './store/recipe.actions';
 
 @Injectable()
-export class RecipesResolverService implements Resolve<Recipe[]> {
+export class RecipesResolverService {
   constructor(private store: Store<AppState>, private actions$: Actions) {}
 
   resolve() {
