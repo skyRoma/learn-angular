@@ -309,6 +309,77 @@
           }
         }
       }
+    },
+    "signals": {
+      "projectType": "application",
+      "schematics": {},
+      "root": "projects/signals",
+      "sourceRoot": "projects/signals/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/signals",
+            "index": "projects/signals/src/index.html",
+            "main": "projects/signals/src/main.ts",
+            "polyfills": "projects/signals/src/polyfills.ts",
+            "tsConfig": "projects/signals/tsconfig.app.json",
+            "assets": [
+              "projects/signals/src/favicon.ico",
+              "projects/signals/src/assets"
+            ],
+            "styles": [
+              "projects/signals/src/styles.css"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "browserTarget": "signals:build:production"
+            },
+            "development": {
+              "browserTarget": "signals:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "signals:build"
+          }
+        }
+      }
     }
   },
   "cli": {

@@ -126,10 +126,10 @@ to find this markup element;
 
 - Use `EventEmitter` only for `@Output()`, not like a `Subject`;
 
-- `Template-Driven Forms`: The PatchValue is used to update only a subset of the
+- `Template-Driven Forms`: The `PatchValue` is used to update only a subset of the
   elements of the FormGroup or FormArray. It will only update the matching objects
   and ignores the rest.
-  The SetValue requires that the object must match the structure of the FormGroup
+  The `SetValue` requires that the object must match the structure of the FormGroup
   or FormArray exactly. Otherwise, it will result in an error;
 
 - ```js
@@ -189,7 +189,7 @@ to find this markup element;
   launch the app (BrowserModule re-exports CommonModule for AppModule).
 
 - Providers & Modules: [(source)](https://www.udemy.com/course/the-complete-guide-to-angular-2)
-  ![Providers & Modules](./src/assets/modules.png)
+  ![Providers & Modules](./projects/main-course/src/assets/modules.png)
 
 - With JIT (Just-In-execution-Time) compilation Angular template compiler runs
   in browser so this compiler also part of build code in the browser;

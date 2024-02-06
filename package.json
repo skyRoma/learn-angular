@@ -12,7 +12,8 @@
     "build:ssr": "ng build main-course && ng run main-course:server",
     "prerender": "ng run main-course:prerender",
     "start:animation": "ng run animation:serve",
-    "start:standalone-components": "ng run standalone-components:serve"
+    "start:standalone-components": "ng run standalone-components:serve",
+    "start:signals": "ng run signals:serve"
   },
   "private": true,
   "dependencies": {
@@ -50,6 +51,6 @@
     "karma-coverage": "~2.1.0",
     "karma-jasmine": "~4.0.0",
     "karma-jasmine-html-reporter": "~1.7.0",
-    "typescript": "~4.6.2"
+    "typescript": "^4.8.4"
   }
 }
