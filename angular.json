@@ -65,10 +65,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "main-course:build:production"
+              "buildTarget": "main-course:build:production"
             },
             "development": {
-              "browserTarget": "main-course:build:development"
+              "buildTarget": "main-course:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -76,7 +76,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "main-course:build"
+            "buildTarget": "main-course:build"
           }
         },
         "test": {
@@ -125,7 +125,7 @@
           "defaultConfiguration": "production"
         },
         "serve-ssr": {
-          "builder": "@nguniversal/builders:ssr-dev-server",
+          "builder": "@angular-devkit/build-angular:ssr-dev-server",
           "configurations": {
             "development": {
               "browserTarget": "main-course:build:development",
@@ -139,7 +139,7 @@
           "defaultConfiguration": "development"
         },
         "prerender": {
-          "builder": "@nguniversal/builders:prerender",
+          "builder": "@angular-devkit/build-angular:prerender",
           "options": {
             "routes": [
               "/"
@@ -220,10 +220,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "animation:build:production"
+              "buildTarget": "animation:build:production"
             },
             "development": {
-              "browserTarget": "animation:build:development"
+              "buildTarget": "animation:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -231,7 +231,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "animation:build"
+            "buildTarget": "animation:build"
           }
         }
       }
@@ -297,10 +297,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "standalone-components:build:production"
+              "buildTarget": "standalone-components:build:production"
             },
             "development": {
-              "browserTarget": "standalone-components:build:development"
+              "buildTarget": "standalone-components:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -308,7 +308,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "standalone-components:build"
+            "buildTarget": "standalone-components:build"
           }
         }
       }
@@ -368,10 +368,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "signals:build:production"
+              "buildTarget": "signals:build:production"
             },
             "development": {
-              "browserTarget": "signals:build:development"
+              "buildTarget": "signals:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -379,7 +379,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "signals:build"
+            "buildTarget": "signals:build"
           }
         }
       }
