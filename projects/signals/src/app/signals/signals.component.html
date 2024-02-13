@@ -1,7 +1,8 @@
-<h1>Default (Automatic Change Detection)</h1>
+<h1>Signals</h1>
 
 <div id="counter">
-  <p id="counter-output">Counter: {{ counter }}</p>
+  <p id="counter-output">Counter: {{ counter() }}</p>
+  <p id="counter-output">Double Counter: {{ doubleCounter() }}</p>
   <div id="counter-btns">
     <button (click)="decrement()">Decrement</button>
     <button (click)="increment()">Increment</button>
@@ -10,7 +11,7 @@
 
 <h2>Action Log</h2>
 <ol id="log">
-  @for (action of actions; track $index) {
+  @for (action of actions(); track $index) {
   <li>{{ action }}</li>
   }
 </ol>

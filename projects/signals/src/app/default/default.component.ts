@@ -5,7 +5,6 @@ import { Component } from '@angular/core';
   selector: 'app-default',
   templateUrl: './default.component.html',
   standalone: true,
-  imports: [NgFor],
 })
 export class DefaultComponent {
   actions: string[] = [];
