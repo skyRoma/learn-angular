@@ -5,7 +5,6 @@
   "projects": {
     "main-course": {
       "projectType": "application",
-      "schematics": {},
       "root": "projects/main-course",
       "sourceRoot": "projects/main-course/src",
       "prefix": "app",
@@ -25,8 +24,7 @@
             "styles": [
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "projects/main-course/src/styles.css"
-            ],
-            "scripts": []
+            ]
           },
           "configurations": {
             "production": {
@@ -90,10 +88,7 @@
               "projects/main-course/src/favicon.ico",
               "projects/main-course/src/assets"
             ],
-            "styles": [
-              "projects/main-course/src/styles.css"
-            ],
-            "scripts": []
+            "styles": ["projects/main-course/src/styles.css"]
           }
         },
         "server": {
@@ -141,9 +136,7 @@
         "prerender": {
           "builder": "@angular-devkit/build-angular:prerender",
           "options": {
-            "routes": [
-              "/"
-            ]
+            "routes": ["/"]
           },
           "configurations": {
             "production": {
@@ -161,7 +154,6 @@
     },
     "animation": {
       "projectType": "application",
-      "schematics": {},
       "root": "projects/animation",
       "sourceRoot": "projects/animation/src",
       "prefix": "app",
@@ -178,10 +170,7 @@
               "projects/animation/src/favicon.ico",
               "projects/animation/src/assets"
             ],
-            "styles": [
-              "projects/animation/src/styles.css"
-            ],
-            "scripts": []
+            "styles": ["projects/animation/src/styles.css"]
           },
           "configurations": {
             "production": {
@@ -238,7 +227,6 @@
     },
     "standalone-components": {
       "projectType": "application",
-      "schematics": {},
       "root": "projects/standalone-components",
       "sourceRoot": "projects/standalone-components/src",
       "prefix": "app",
@@ -255,10 +243,7 @@
               "projects/standalone-components/src/favicon.ico",
               "projects/standalone-components/src/assets"
             ],
-            "styles": [
-              "projects/standalone-components/src/styles.css"
-            ],
-            "scripts": []
+            "styles": ["projects/standalone-components/src/styles.css"]
           },
           "configurations": {
             "production": {
@@ -315,7 +300,6 @@
     },
     "signals": {
       "projectType": "application",
-      "schematics": {},
       "root": "projects/signals",
       "sourceRoot": "projects/signals/src",
       "prefix": "app",
@@ -332,10 +316,7 @@
               "projects/signals/src/favicon.ico",
               "projects/signals/src/assets"
             ],
-            "styles": [
-              "projects/signals/src/styles.css"
-            ],
-            "scripts": []
+            "styles": ["projects/signals/src/styles.css"]
           },
           "configurations": {
             "production": {
@@ -380,6 +361,73 @@
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
             "buildTarget": "signals:build"
+          }
+        }
+      }
+    },
+    "ngrx": {
+      "projectType": "application",
+      "root": "projects/ngrx",
+      "sourceRoot": "projects/ngrx/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/ngrx",
+            "index": "projects/ngrx/src/index.html",
+            "main": "projects/ngrx/src/main.ts",
+            "polyfills": "projects/ngrx/src/polyfills.ts",
+            "tsConfig": "projects/ngrx/tsconfig.app.json",
+            "assets": [
+              "projects/ngrx/src/favicon.ico",
+              "projects/ngrx/src/assets"
+            ],
+            "styles": ["projects/ngrx/src/styles.css"]
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "buildTarget": "ngrx:build:production"
+            },
+            "development": {
+              "buildTarget": "ngrx:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "buildTarget": "ngrx:build"
           }
         }
       }

@@ -1,4 +1,4 @@
-import { Component } from "@angular/core";
+import { Component } from '@angular/core';
 import {
   trigger,
   state,
@@ -7,124 +7,124 @@ import {
   animate,
   keyframes,
   group,
-} from "@angular/animations";
+} from '@angular/animations';
 
 @Component({
-  selector: "app-root",
-  templateUrl: "./app.component.html",
+  selector: 'app-root',
+  templateUrl: './app.component.html',
   animations: [
-    trigger("divState", [
+    trigger('divState', [
       state(
-        "normal",
+        'normal',
         style({
-          "background-color": "red",
-          transform: "translateX(0)",
+          'background-color': 'red',
+          transform: 'translateX(0)',
         })
       ),
       state(
-        "highlighted",
+        'highlighted',
         style({
-          "background-color": "blue",
-          transform: "translateX(100px)",
+          'background-color': 'blue',
+          transform: 'translateX(100px)',
         })
       ),
-      transition("normal <=> highlighted", animate(300)),
+      transition('normal <=> highlighted', animate(300)),
       // transition('highlighted => normal', animate(800))
     ]),
-    trigger("wildState", [
+    trigger('wildState', [
       state(
-        "normal",
+        'normal',
         style({
-          "background-color": "red",
-          transform: "translateX(0) scale(1)",
+          'background-color': 'red',
+          transform: 'translateX(0) scale(1)',
         })
       ),
       state(
-        "highlighted",
+        'highlighted',
         style({
-          "background-color": "blue",
-          transform: "translateX(100px) scale(1)",
+          'background-color': 'blue',
+          transform: 'translateX(100px) scale(1)',
         })
       ),
       state(
-        "shrunken",
+        'shrunken',
         style({
-          "background-color": "green",
-          transform: "translateX(0) scale(0.5)",
+          'background-color': 'green',
+          transform: 'translateX(0) scale(0.5)',
         })
       ),
-      transition("normal => highlighted", animate(300)),
-      transition("highlighted => normal", animate(800)),
-      transition("shrunken <=> *", [
+      transition('normal => highlighted', animate(300)),
+      transition('highlighted => normal', animate(800)),
+      transition('shrunken <=> *', [
         style({
-          "background-color": "orange",
+          'background-color': 'orange',
         }),
         animate(
           1000,
           style({
-            borderRadius: "50px",
+            borderRadius: '50px',
           })
         ),
         animate(500),
       ]),
     ]),
     // ////////////////////////////////////////////////
-    trigger("list1", [
-      transition("void => *", [
+    trigger('list1', [
+      transition('void => *', [
         style({
           opacity: 0,
-          transform: "translateX(-100px)",
+          transform: 'translateX(-100px)',
         }),
         animate(300),
       ]),
-      transition("* => void", [
+      transition('* => void', [
         animate(300),
         style({
-          transform: "translateX(100px)",
+          transform: 'translateX(100px)',
           opacity: 0,
         }),
       ]),
     ]),
-    trigger("list2", [
-      transition("void => *", [
+    trigger('list2', [
+      transition('void => *', [
         animate(
           1000,
           keyframes([
             style({
-              transform: "translateX(-100px)",
+              transform: 'translateX(-100px)',
               opacity: 0,
               offset: 0,
             }),
             style({
-              transform: "translateX(-70px)",
+              transform: 'translateX(-70px)',
               opacity: 0.5,
               offset: 0.3,
             }),
             style({
-              transform: "translateX(+10px)",
+              transform: 'translateX(+10px)',
               opacity: 1,
               offset: 0.8,
             }),
             style({
-              transform: "translateX(0px)",
+              transform: 'translateX(0px)',
               opacity: 1,
               offset: 1,
             }),
           ])
         ),
       ]),
-      transition("* => void", [
+      transition('* => void', [
         group([
           animate(
             300,
             style({
-              color: "red",
+              color: 'red',
             })
           ),
           animate(
             800,
             style({
-              transform: "translateX(100px)",
+              transform: 'translateX(100px)',
               opacity: 0,
             })
           ),
@@ -134,21 +134,21 @@ import {
   ],
 })
 export class AppComponent {
-  state = "normal";
-  wildState = "normal";
-  list = ["Milk", "Sugar", "Bread"];
+  state = 'normal';
+  wildState = 'normal';
+  list = ['Milk', 'Sugar', 'Bread'];
 
   onAnimate() {
-    this.state == "normal"
-      ? (this.state = "highlighted")
-      : (this.state = "normal");
-    this.wildState == "normal"
-      ? (this.wildState = "highlighted")
-      : (this.wildState = "normal");
+    this.state == 'normal'
+      ? (this.state = 'highlighted')
+      : (this.state = 'normal');
+    this.wildState == 'normal'
+      ? (this.wildState = 'highlighted')
+      : (this.wildState = 'normal');
   }
 
   onShrink() {
-    this.wildState = "shrunken";
+    this.wildState = 'shrunken';
   }
 
   onAdd(item) {

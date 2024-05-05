@@ -14,6 +14,7 @@
     "start:animation": "ng run animation:serve",
     "start:standalone-components": "ng run standalone-components:serve",
     "start:signals": "ng run signals:serve",
+    "start:ngrx": "ng run ngrx:serve",
     "check-libs-updates": "ncu",
     "libs:update:patch": "ncu -u --target patch && npm i",
     "libs:update:minor": "ncu -u --target minor && npm i",

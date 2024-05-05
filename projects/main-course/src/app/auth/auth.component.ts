@@ -58,7 +58,7 @@ export class AuthComponent implements OnInit, OnDestroy {
   }
 
   private showErrorAlert(errorMsg: string) {
-    const viewContainerRef = this.alertHost.viewContainerRef;
+    const { viewContainerRef } = this.alertHost;
     viewContainerRef.clear();
     const alertComponentRef = viewContainerRef.createComponent(AlertComponent);
     alertComponentRef.instance.message = errorMsg;
